@@ -2,7 +2,9 @@
     cursor: pointer;
     color: darkblue;
 }
-
+.button-get-movies {
+    margin: 12px;
+}
 .title {
     font-size: 2em;
     font-weight: bold;

@@ -2,23 +2,29 @@
 (() => {
     const APIUrl = 'https://ghibliapi.herokuapp.com/';
     const resultsView = document.getElementById('results');
+    const getMoviesButton = document.getElementById('allmovies')
 
-    // Set up handlers
+    getMoviesButton.addEventListener('click', getAllMovies);
 
-    document.getElementById('allmovies').addEventListener('click', getAllMovies);
-
-    // Helper functions
-
+    
     function getAllMovies() {
         fetch(`${APIUrl}films`)
         .then((response) => response.json())
         .then((data) => displayAllMovies(data));
     }
-
+    
+    function getMovieDetails(event) {
+        event.preventDefault();
+        fetch(`${APIUrl}films/${event.target.getAttribute('data-id')}`)
+        .then((result) => result.json())
+        .then((data) => displayMovieDetails(data));
+    }
+    
     function clearResults() {
         while (resultsView.firstChild) {
             resultsView.removeChild(resultsView.firstChild);
         }
+        getMoviesButton.style.display = '';
     }
 
     function displayAllMovies(data) {
@@ -33,14 +39,10 @@
             item.addEventListener('click', getMovieDetails);
             list.appendChild(item);
         });
+
+        getMoviesButton.style.display = 'none';
     }
 
-    function getMovieDetails(event) {
-        event.preventDefault();
-        fetch(`${APIUrl}films/${event.target.getAttribute('data-id')}`)
-            .then((result) => result.json())
-            .then((data) => displayMovieDetails(data));
-    }
 
     function displayMovieDetails(data) {
         clearResults();
