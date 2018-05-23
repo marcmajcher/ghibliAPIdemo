@@ -31,7 +31,7 @@
         clearResults();
         const list = document.createElement('ul');
         resultsView.appendChild(list);
-
+        data.sort(((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0)));
         data.forEach(movie => {
             const item = document.createElement('li');
             item.innerHTML = `${movie.title}`;
