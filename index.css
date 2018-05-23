@@ -1,0 +1,25 @@
+.result-list ul li {
+    cursor: pointer;
+    color: darkblue;
+}
+
+.title {
+    font-size: 2em;
+    font-weight: bold;
+}
+.release_date {
+    color: darkslategrey;
+}
+.director::before {
+    content: "Directed by: ";
+    font-weight: 500;
+}
+.producer::before {
+    content: "Produced by: ";
+    font-weight: 500;
+}
+
+.description {
+    font-size: 1.2em;
+    margin-top: 1em;;
+}
